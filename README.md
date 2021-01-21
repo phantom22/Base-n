@@ -25,6 +25,6 @@ b.parse("$$%%%$$$$"); // 399
 
 ---
 
-**IMPORTANT**: this script is supposed to work only with positive integers, every other variating may not give the expected result!
+**IMPORTANT**: this script is supposed to work only with positive integers, every other variation won't give the expected result!
 
 ### Have fun!
