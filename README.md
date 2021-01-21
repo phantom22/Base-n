@@ -19,8 +19,8 @@ b.parse("hle"); // 1744
 
 ```js
 const b = new Base(2,"%$"); // you can use any character
-b.encode(399); // returns "$%$$%%$$$$%", same as "110001111" in binary
-b.parse("$%$$%%$$$$%"); // 399
+b.encode(399); // returns "$$%%%$$$$", same as "110001111" in binary
+b.parse("$$%%%$$$$"); // 399
 ```
 *unless your base is higher than 26, you can omit the second argument (the script uses english letters as placeholder)*
 
