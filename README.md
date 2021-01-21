@@ -1,5 +1,5 @@
 # Base-n
-a simple script to create custom numeric sistems and encode&amp;parse them
+a simple script to create custom numeric sistems and encode&amp;parse them.
 
 ---
 
@@ -25,5 +25,7 @@ b.parse("$%$$%%$$$$%"); // 399
 *unless your base is higher than 26, you can omit the second argument (the script uses english letters as placeholder)*
 
 ---
+
+**IMPORTANT**: this script isn't supposed to work with negative numbers, so it will automatically convert.
 
 ### Enjoy!
