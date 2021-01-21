@@ -1,5 +1,5 @@
 # Base-n
-a simple script to create custom numeric sistems and encode&amp;parse them.
+a simple script to create custom numeral systems and encode&amp;parse them.
 
 ---
 
