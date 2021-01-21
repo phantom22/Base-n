@@ -15,7 +15,7 @@ b.encode(1744); // "hle"
 b.parse("hle"); // 1744
 ```
 
-## Using custom characters
+## Using custom sets of characters
 
 ```js
 const b = new Base(2,"%$"); // you can use any character
@@ -26,6 +26,6 @@ b.parse("$$%%%$$$$"); // 399
 
 ---
 
-**IMPORTANT**: this script isn't supposed to work with negative numbers, so it will automatically convert.
+**IMPORTANT**: this script isn't supposed to work with negative numbers, so it will automatically convert them.
 
 ### Enjoy!
