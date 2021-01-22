@@ -52,7 +52,4 @@ class Base {
 
     }
     
-} 
-
-let b = new Base(15);
-b.BigInt.encode(213161n);
+}
