@@ -18,7 +18,7 @@ b.Int.parse("6d0"); // 1744
 ```js
 const b = new Base(36), // in this case the character range is from "0" to "z"
       superBigNumber = 1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890n,
-      encoded = b.BigInt.encode(superBigNumber); // "6d0"
+      encoded = b.BigInt.encode(superBigNumber); // "b2syhl8myvmo0ne6xh3z850q433jeh1roobufu1qa7y1m54dazh62wcrqyf1xyoi"
 
 b.BigInt.parse(encoded) === superBigNumber // true
 ```
