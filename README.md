@@ -6,7 +6,7 @@ a simple script to create custom numeral systems and encode&amp;parse them.
 ## Usage
 the constructor takes two arguments:
 * **numbericBase** => integer
-* **baseCharacters** => string (not Array for more readable code); it will be split into an array and it decides how your numbers will be parsed.
+* **baseCharacters** => string (not Array for more readable code); it will be split into an array and it decides how your numbers will be parsed for example "abcdefghij" would be the equivalent of "0123456789" in our decimal numerical system.
 
 ```js
 const b = new Base(16); // in this case the character range is from "0" to "f"
