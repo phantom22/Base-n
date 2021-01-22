@@ -4,9 +4,9 @@ class Base {
         let t = this;
         if (typeof a != "number" || 2 > a) throw "Invalid base!";
         const BASE = Math.floor(a),
-            BASE_CHARS = (typeof b != "undefined" || 128 < a ? b : "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZабвгдеёжзийклмнопрсиуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСИУФХЦЧШЩЪЫЬЗЮЯ").slice(0, a).split("")
+              BASE_CHARS = (typeof b != "undefined" || 128 < a ? b : "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZабвгдеёжзийклмнопрсиуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСИУФХЦЧШЩЪЫЬЗЮЯ").slice(0, a).split("")
 
-        let B = (n) => BigInt(B);
+        let B = (n) => BigInt(n);
         let getStepInt = (magnitude, step) => {
             return BASE ** magnitude * step
         }
@@ -14,7 +14,7 @@ class Base {
             for (var magnitude = 0; 200 > magnitude && !(getStepInt(magnitude + 1, 1) > number); magnitude++);
             return magnitude
         }
-        let getStepBigInt = (magnitude, step) => (B(t.BASE) ** B(magnitude) * B(step));
+        let getStepBigInt = (magnitude, step) => (B(BASE) ** B(magnitude) * B(step));
         let estimateBigInt = (number) => {
             for (var magnitude = 0; 200 > magnitude && !(getStepBigInt(magnitude + 1, 1) > number); magnitude++);
             return magnitude
