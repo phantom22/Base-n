@@ -2,7 +2,7 @@ class Base {
 
     constructor(a, b) {
         let t = this;
-        if (2 > a) throw `Base cannot be less than 2!`;
+        if (typeof a != "number" || 2 > a) throw "Invalid base!";
         const BASE = Math.floor(a),
             BASE_CHARS = (typeof b != "undefined" || 128 < a ? b : "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZабвгдеёжзийклмнопрсиуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСИУФХЦЧШЩЪЫЬЗЮЯ").slice(0, a).split("")
 
