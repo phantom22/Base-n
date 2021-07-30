@@ -29,14 +29,14 @@ base.decrypt("1110110010001101110010010000101001100100","key","01","sukymeo gra"
 
 
 ## High precision but to an extent
-Web browsers are pretty limited on the amount of precision that you can have in math operations between very large number, so keep in mind that bigger messages, keys or charsets may introduce unexpected results!
+Web browsers are pretty limited on the amount of data that they can store in a single integer, therefore math operations between very large numbers maybe inprecise: so keep in mind that bigger messages, keys or charsets may introduce unexpected results!
 
 ## Using custom sets of characters
 Keep in mind that ```baseCharset``` & ```newCharset``` have the same function as "0123456789" in the decimal numerical system: enumerating, from lowest to highest, the numerical value of a symbol, but you can easily mix things up (for ex. "9302756184") and it would be very difficult to brute force a value without knowing both the charsets symbol order.
 
 ---
 
-**IMPORTANT**: keep in mind this situation!
+**Common situtation**
 ```js
 const baseCharset = "abcdefghijklmnopqrstuvwxyz";
 base.encrypt("arc","key",baseCharset,"0123");
