@@ -4,9 +4,9 @@ a simple script to create custom numeral systems and encode&amp;parse them.
 ---
 
 ## Usage
-**base** a is static class with two methods: ```encrypt``` & ```decrypt```
+**base** is a static class with two methods: ```encrypt``` & ```decrypt```
 
-they both sare the same arguments:
+they both share the same arguments:
 | name              |  type  | description                                                                                   | additional                   |
 |:------------------|:------:|:----------------------------------------------------------------------------------------------|:-----------------------------|
 | ```msg```         | string | whatever your want to encrypt                                                                 |                              |
