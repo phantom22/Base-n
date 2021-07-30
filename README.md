@@ -15,7 +15,7 @@ they both sare the same arguments:
 | ```newCharset```  | string | string of non repeating symbols                                                               | its length = numberical base |
 
 ```js
-base.encrypt("your message", "key", "sukymeo gra", "01")
+base.encrypt("your message", "key", "sukymeo gra", "01");
 /*  encoding a message from base15 to base2
  *  "sukymeo gra".length: 15
  *  "01".length: 2
