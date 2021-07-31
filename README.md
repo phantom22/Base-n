@@ -15,22 +15,26 @@ they both share the same arguments:
 | ```newCharset```  | string | string of non repeating symbols                                                               | its length = numberical base |
 
 ```js
+// instead of "sukymeo gra" any other arrangement would work, for ex. " aegkmorsuy" BUT with a different output!!
 BaseN.encrypt("your message", "key", "sukymeo gra", "01");
-/*  instead of "sukymeo gra" any other arrangement would work, for ex. " aegkmorsuy" BUT with a different output!!
- *  encoding a message from base15 to base2
+/*  encoding a message from base15 to base2
  *  "sukymeo gra".length: 15
  *  "01".length: 2
- */  output: "1110110010001101110010010000101001100100"
+ *  output: "1110110010001101110010010000101001100100"
+ */
 
 BaseN.decrypt("1110110010001101110010010000101001100100","key","01","sukymeo gra");
-//  same logic applies here: parsing from base2 to base15
-// output: "your message"
+/*  same logic applies here: parsing from base2 to base15
+ *  output: "your message"
+ */
 ```
 
 
 
 ## High precision but to an extent
-Web browsers are pretty limited on the amount of data that they can store in a single integer, therefore math operations between very large numbers maybe inprecise: so keep in mind that bigger messages, keys or charsets may introduce unexpected results! ```If either BaseN.encrypt or BaseN.decrypt returns an empty string, you should shorten your message, your key or the charsets!!!```
+Web browsers are pretty limited on the amount of data that they can store in a single integer, therefore math operations between very large numbers maybe inprecise: so keep in mind that bigger messages, keys or charsets may introduce unexpected results!
+
+```If either BaseN.encrypt or BaseN.decrypt returns an empty string, you should shorten either your message, your key or the charsets!!!```
 
 ## Using custom sets of characters
 Keep in mind that ```baseCharset``` & ```newCharset``` have the same function as "0123456789" in the decimal numerical system: enumerating, from lowest to highest, the numerical value of a symbol, but you can easily mix things up (for ex. "9302756184") and it would be very difficult to brute force a value without knowing both the charsets symbol order.
