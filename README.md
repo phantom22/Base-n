@@ -11,8 +11,8 @@ they both share the same arguments:
 |:------------------|:------:|:----------------------------------------------------------------------------------------------|:-----------------------------|
 | ```msg```         | string | whatever your want to encrypt                                                                 |                              |
 | ```key```         | string | a key that will further secure the encryption                                                 |                              |
-| ```baseCharset``` | string | string of non repeating symbols that must include all the characters used both in msg and key | its length = numberical base |
-| ```newCharset```  | string | string of non repeating symbols                                                               | its length = numberical base |
+| ```baseCharset``` | string | string of non repeating symbols that must include all the characters used both in msg and key | its length = numerical base |
+| ```newCharset```  | string | string of non repeating symbols                                                               | its length = numerical base |
 
 ```js
 // instead of "sukymeo gra" any other arrangement would work, for ex. " aegkmorsuy" BUT with a different output!!
