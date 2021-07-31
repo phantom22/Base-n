@@ -44,9 +44,12 @@ There are two other methods:
 BaseN.shuffle("abcdefg0123456");
 // output: "5fga6c2d3b140e"
 
-BaseN.extractCharset("ababcdcdefefghghijijklklmnmn");
+let testCharset = BaseN.extractCharset("ababcdcdefefghghijijklklmnmn");
 // output: "abcdefghijklmn"
 // note that the order of the characters completely depends from the order of apparition of the symbols in the input string
+
+testCharset = BaseN.shuffle(testCharset);
+// result: "mdanighfjbkelc"
 ```
 ---
 
