@@ -22,8 +22,8 @@ BaseN.encrypt("your message", "key", "sukymeo gra", "01");
  */  output: "1110110010001101110010010000101001100100"
 
 BaseN.decrypt("1110110010001101110010010000101001100100","key","01","sukymeo gra");
-/*  same logic applies here: parsing from base2 to base15
- */ output: "your message"
+//  same logic applies here: parsing from base2 to base15
+// output: "your message"
 ```
 
 
@@ -40,6 +40,14 @@ There are two other methods:
 |:---------------------|:------------:|:----------------------------------------------------------------------------------------------|
 | ```shuffle```        | charset      | randomly reorders a charset                                                                   |
 | ```extractCharset``` | string       | given an input, this function will return a string of all the characters ignoring duplicates  |
+```js
+BaseN.shuffle("abcdefg0123456");
+// output: "5fga6c2d3b140e"
+
+BaseN.extractCharset("ababcdcdefefghghijijklklmnmn");
+// output: "abcdefghijklmn"
+// note that the order of the characters completely depends from the order of apparition of the symbols in the input string
+```
 ---
 
 **Common situtation**
