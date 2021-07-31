@@ -16,7 +16,8 @@ they both share the same arguments:
 
 ```js
 BaseN.encrypt("your message", "key", "sukymeo gra", "01");
-/*  encoding a message from base15 to base2
+/*  instead of "sukymeo gra" any other arrangement would work, for ex. " aegkmorsuy" BUT with a different output!!
+ *  encoding a message from base15 to base2
  *  "sukymeo gra".length: 15
  *  "01".length: 2
  */  output: "1110110010001101110010010000101001100100"
