@@ -32,7 +32,7 @@ BaseN.decrypt("1110110010001101110010010000101001100100","key","01","sukymeo gra
 
 
 ## High precision but to an extent
-Web browsers are pretty limited on the amount of data that they can store in a single integer, therefore math operations between very large numbers maybe inprecise: so keep in mind that bigger messages, keys or charsets may introduce unexpected results!
+Web browsers are pretty limited on the amount of data that they can store in a single integer, therefore math operations between very large numbers may be inprecise: so keep in mind that bigger messages, keys or charsets may introduce unexpected results!
 
 ```If either BaseN.encrypt or BaseN.decrypt returns an empty string, you should shorten either your message, your key or the charsets!!!```
 
