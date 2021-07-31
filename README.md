@@ -38,7 +38,7 @@ Keep in mind that ```baseCharset``` & ```newCharset``` have the same function as
 There are two other methods:
 | name                 | arguments    | description                                                                                   |
 |:---------------------|:------------:|:----------------------------------------------------------------------------------------------|
-| ```shuffle```        | charset      | randomly reorders a charset, useful to create a unique order for encryption                   |
+| ```shuffle```        | charset      | randomly reorders a charset, useful to create a unique charset order for encryption           |
 | ```extractCharset``` | string       | given an input, this function will return a string of all the characters ignoring duplicates  |
 ```js
 BaseN.shuffle("abcdefg0123456");
