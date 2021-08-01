@@ -20,10 +20,10 @@ BaseN.encrypt("your message", "key", "sukymeo gra", "01");
 /*  encoding a message from base15 to base2
  *  "sukymeo gra".length: 15
  *  "01".length: 2
- *  output: "1110110010001101110010010000101001100100"
+ *  output: "1011100111011000100111011010110010001011"
  */
 
-BaseN.decrypt("1110110010001101110010010000101001100100","key","01","sukymeo gra");
+BaseN.decrypt("1011100111011000100111011010110010001011","key","01","sukymeo gra");
 /*  same logic applies here: parsing from base2 to base15
  *  output: "your message"
  */
@@ -62,9 +62,9 @@ testCharset = BaseN.shuffle(testCharset);
 ```js
 const baseCharset = "abcdefghijklmnopqrstuvwxyz";
 BaseN.encrypt("arc","key",baseCharset,"0123");
-// output: "203222100210"
+// output: "33313222"
 
-BaseN.decrypt("203222100210","key","0123",baseCharset);
+BaseN.decrypt("33313222","key","0123",baseCharset);
 /* output: "rc"
  *
  * But why?
