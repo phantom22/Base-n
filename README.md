@@ -34,7 +34,7 @@ BaseN.decrypt("1011100111011000100111011010110010001011","key","01","sukymeo gra
 ## High precision but to an extent
 Web browsers are pretty limited on the amount of data that they can store in a single integer, therefore math operations between very large numbers may be inprecise: so keep in mind that bigger messages, keys or charsets may introduce unexpected results!
 
-```If either BaseN.encrypt or BaseN.decrypt returns an empty string, you should shorten either your message, your key or the charsets!!!```
+```If either BaseN.encrypt or BaseN.decrypt returns an empty string, generally it's the keys fault in combination with the message (you should shorten/change either your message, your key or the charsets)!!!```
 
 ## Using custom sets of characters
 Keep in mind that ```baseCharset``` & ```newCharset``` have the same function as "0123456789" in the decimal numerical system: enumerating, from lowest to highest, the numerical value of a symbol, but you can easily mix things up (for ex. "9302756184") and it would be very difficult to brute force a value without knowing both the charsets symbol order.
