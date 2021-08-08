@@ -12,8 +12,8 @@ they both share the same arguments:
 |:------------------|:------:|:----------------------------------------------------------------------------------------------|:-----------------------------|
 | ```msg```         | string | whatever your want to encrypt                                                                 |                              |
 | ```key```         | string | a key that will further secure the encryption                                                 |                              |
-| ```baseCharset``` | string | string of non repeating symbols that must include all the characters used both in msg and key | its length = numerical base |
-| ```newCharset```  | string | string of non repeating symbols                                                               | its length = numerical base |
+| ```baseCharset``` | string | string of non repeating symbols that must include all the characters used both in msg and key | its length = numerical base  |
+| ```newCharset```  | string | string of non repeating symbols                                                               | its length = numerical base  |
 
 ```js
 // instead of "sukymeo gra" any other arrangement would work, for ex. " aegkmorsuy" BUT with a different output!!
@@ -40,6 +40,7 @@ Keep in mind that ```baseCharset``` & ```newCharset``` have the same function as
 
 ## Encryption of big chuncks of data
 There is another way to encode a message: ```encryptFragments``` & ```decryptFragments```
+
 they're pretty similar to the main functions but have some extra arguments
 | name                   | extra arguments            | description                                                                                     |
 |:-----------------------|:--------------------------:|:------------------------------------------------------------------------------------------------|
@@ -75,8 +76,8 @@ BaseN.extractAndShuffle("abcdefghij", 2);
  *	["ab","cd","ef","gh","ij"]
  * then the scripts checks each first letter:
  *	["a","c","e","g","i"]
- * and makes sure so the outputs first letter isn't any of these
- * output: "dblcgfaeih" ("d" isn't one of the first letters)
+ * and makes sure that the first letter of the output isn't any of these
+ * output: "dblcgfaeih"
  */
 ```
 ---
