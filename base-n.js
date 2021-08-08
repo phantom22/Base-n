@@ -1,11 +1,11 @@
 /**
  * Converts a number to BigInt.
  */
-function B(e){return BigInt(e)}
-/**
- * A static class that provides a variety of functions to encrypt/decrypt messages.
- */
-class BaseN{
+ function B(e){return BigInt(e)}
+ /**
+  * A static class that provides a variety of functions to encrypt/decrypt messages.
+  */
+ class BaseN{
     /**
      * Encrypts a string, given a key and two charsets.
      * 
@@ -64,5 +64,5 @@ class BaseN{
      * @returns {string}
      */
     static decryptFragments(msg,key,oldCharset,newCharset,inBetween){inBetween=void 0===inBetween?" ":inBetween;let s="";const c=msg.split(inBetween);for(let msg=0;msg<c.length;msg++)s+=BaseN.decrypt(c[msg],key,oldCharset,newCharset);return s}
-}
-Object.freeze(BaseN);
+ }
+ Object.freeze(BaseN);
