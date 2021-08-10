@@ -6,7 +6,7 @@ a simple script to encrypt and parse strings.
 ## Usage
 **BaseN** is a static class with two main methods: ```encrypt``` & ```decrypt```
 
-they both share the same arguments:
+they both share the same arguments (stored in an object):
 | name              |  type  | description                                                                                   | additional                   |
 |:------------------|:------:|:----------------------------------------------------------------------------------------------|:-----------------------------|
 | ```msg```         | string | whatever your want to encrypt                                                                 |                              |
