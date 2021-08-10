@@ -9,7 +9,7 @@ class BaseN {
      * Encrypts a message, given a key and two charsets.
      * 
      * ```baseCharset``` must include all symbols used in both *msg* and *key*.
-	 * @param {Object} settings
+     * @param {Object} settings
      * @param {string} settings.msg
      * @param {string} settings.key
      * @param {string} settings.baseCharset
@@ -18,7 +18,7 @@ class BaseN {
     static encrypt(settings){const{msg:t,key:r,baseCharset:n,newCharset:s}=settings,a=_B(n.length),h=_B(s.length);let i=_B(0),l,c="",o=[];for(let e=0;e<t.length;e++)i+=a**_B(t.length-1-e)*_B(n.indexOf(t[e]));for(let e=_B(r.length-1);e>=0;e--){const t=n.indexOf(r[Number(e)]);i+=a**e*_B(t),o.push(t)}if(i<0)return"";for(l=_B(0);h**l<=i&&h**(l+_B(1))<i;l++);for(;l>=0;l--)for(let e=_B(0);e<h;e++){const t=h**l,r=t*e;if(r<=i&&r+t>i){const t=(Number(e)+o.reduce((e,t)=>e+t))%Number(h);i-=r,c+=s[t];for(let e=0;e<o.length&&(o[e]+=1,o[e]>=a);e++)o[e]=0}}return c}
     /**
      * Decrypts a message, given a key and two charsets.
-	 * @param {Object} settings
+     * @param {Object} settings
      * @param {string} settings.msg
      * @param {string} settings.key
      * @param {string} settings.baseCharset
@@ -27,8 +27,8 @@ class BaseN {
     static decrypt(settings){const{msg:t,key:r,baseCharset:n,newCharset:s}=settings,a=_B(n.length),h=_B(s.length);let i=_B(0),l,c="",o=[];for(let e=_B(r.length-1);e>=0;e--){const t=s.indexOf(r[Number(e)]);i-=h**e*_B(t),o.push(t)}for(let e=0;e<t.length;e++){let r=_B(o.reduce((e,t)=>e+t)+n.indexOf(t[e]));for(let e=2;e<a;e++)r-=_B(n.indexOf(t[e]))*a-_B(o.reduce((e,t)=>e+t));for(let e=0;e<o.length&&(o[e]+=1,o[e]>=h);e++)o[e]=0;i+=a**_B(t.length-1-e)*(r%a)}if(i<_B(0))return"";for(l=_B(0);h**l<=i&&h**(l+_B(1))<=i;l++);for(;l>=0;l--)for(let e=_B(0);e<h;e++){const t=h**l,r=t*e;r<=i&&r+t>i&&(i-=r,c+=s[Number(e)])}return c}
     /**
      * Returns a safe charset for both the msg and the key.
-	 * 
-	 * ```substringLength``` affects only the ```msg```.
+     * 
+     * ```substringLength``` affects only the ```msg```.
      * @param {string} msg
      * @param {string} key
      * @param {number} [substringLength=0]
@@ -50,7 +50,7 @@ class BaseN {
     static extractAndRandomize(msg,substringLength){const r=0===(substringLength=void 0===substringLength?0:substringLength)?"":this.extractCharset(msg.match(new RegExp(`.{1,${substringLength}}`,"g")).map(e=>e[0]));let n=this.extractCharset(msg),s=n,a="",h=n.length;for(;n.length!==h-1;){const h=Math.floor(Math.random()*s.length);if(0===substringLength&&msg[0]===s[h]||r.includes(s[h])){s=s.slice(0,h)+s.slice(h+1);continue}if(0===s.length)throw"Impossible to create a safe charset";const i=n.indexOf(s[h]);a+=n[i],n=n.slice(0,i)+n.slice(i+1)}for(;a.length!==h;){const e=Math.floor(Math.random()*n.length);a+=n[e],n=n.slice(0,e)+n.slice(e+1)}return a}
     /**
      * works exactly like ```.encrypt()``` but treats the input as segments, given a valid ```substringLength``` value.
-	 * @param {Object} settings
+     * @param {Object} settings
      * @param {string} settings.msg
      * @param {string} settings.key
      * @param {string} settings.baseCharset
@@ -61,7 +61,7 @@ class BaseN {
     static encryptSubstrings(settings){const{msg:t,key:r,baseCharset:n,newCharset:s,substringLength:a}=settings,h=void 0===settings.inBetween?" ":settings.inBetween;let i="";if("number"!=typeof a)throw"substringLength must be a number!";for(let e=0;e<t.length;e+=a)i+=this.encrypt({msg:t.slice(e,e+a),key:r,baseCharset:n,newCharset:s}),e+a<t.length&&(i+=Array.isArray(h)?h[e%h.length]:h);return i}
     /**
      * works exactly like ```.decrypt()``` but treats the input as segments.
-	 * @param {Object} settings
+     * @param {Object} settings
      * @param {string} settings.msg
      * @param {string} settings.key
      * @param {string} settings.baseCharset
