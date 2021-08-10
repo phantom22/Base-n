@@ -127,7 +127,7 @@ There are two other methods:
 | name                    | arguments              | description                                                                                   |
 |:------------------------|:----------------------:|:----------------------------------------------------------------------------------------------|
 | ```charsetFromMsgAndKey``` | msg, key, substringLength | an easier way of getting a safe charset that includes symbols from both message and key  |
-| ```extractAndRandomize``` | MSG, substringLength | extracts the charset from msg and safely reorders it         |
+| ```extractAndRandomize``` | msg, substringLength | extracts the charset from msg and safely reorders it         |
 | ```extractCharset```    | input                 | given an input, this function will return a string of all the characters ignoring duplicates  |
 ```js
 BaseN.extractAndRandomize("abcdefg0123456");
