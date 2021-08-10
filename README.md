@@ -126,8 +126,9 @@ decrypted2 === longString; // true
 There are two other methods:
 | name                    | arguments              | description                                                                                   |
 |:------------------------|:----------------------:|:----------------------------------------------------------------------------------------------|
-| ```extractAndShuffle``` | charset, fragmentation | safely reorders a charset, useful to create a unique charset order for encryption             |
-| ```extractCharset```    | string                 | given an input, this function will return a string of all the characters ignoring duplicates  |
+| ```charsetFromMsgAndKey``` | msg, key, substringLength | an easier way of getting a safe charset that includes symbols from both message and key  |
+| ```extractAndRandomize``` | MSG, substringLength | extracts the charset from msg and safely reorders it         |
+| ```extractCharset```    | input                 | given an input, this function will return a string of all the characters ignoring duplicates  |
 ```js
 BaseN.extractAndRandomize("abcdefg0123456");
 /* output: "5fga6c2d3b140e"
