@@ -68,6 +68,6 @@ class BaseN {
      * @param {string} settings.newCharset
      * @param {string|string[]} [settings.inBetween=" "] needed to split the input into substrings.
      */
-    static decryptSubstrings(settings){const{msg:t,key:r,baseCharset:n,newCharset:s}=settings,a=void 0===settings.inBetween?" ":settings.inBetween;let h="";const i=Array.isArray(a)?t.split(new RegExp([...new Set(a)].join("|"))):t.split(a);for(let e=0;e<i.length;e++)h+=this.decrypt({msg:i[e],key:r,baseCharset:n,newCharset:s});return h}
+    static decryptSubstrings(settings){const{msg:t,key:r,baseCharset:n,newCharset:s}=settings,a=void 0===settings.inBetween?" ":settings.inBetween;let h="";const i=Array.isArray(a)?t.split(new RegExp(`\\${[...new Set(a)].join("|\\")}`)):t.split(a);for(let e=0;e<i.length;e++)h+=this.decrypt({msg:i[e],key:r,baseCharset:n,newCharset:s});return h}
 }
 Object.freeze(BaseN);
