@@ -28,7 +28,7 @@ BaseN.encrypt({
  *  output: "1011100111011000100111011010110010001011"
  */
 
-BaseN.encrypt({
+BaseN.decrypt({
     msg:"1011100111011000100111011010110010001011", 
     key:"key", 
     baseCharset:"01", 
