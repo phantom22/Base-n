@@ -12,15 +12,13 @@ class BaseN {
      * Encrypts a message, given a key and two charsets.
      * 
      * ```baseCharset``` must include all symbols used in both *msg* and *key*.
-     * @param {Object} settings
-     * @param {string} settings.msg
-     * @param {string} settings.key
-     * @param {string} settings.baseCharset
-     * @param {string} settings.newCharset
+     * @param {string} msg
+     * @param {string} key
+     * @param {string} baseCharset
+     * @param {string} newCharset
      */
-    static encrypt(settings: {msg: string, key: string, baseCharset: string, newCharset: string}) {
-        const { msg, key, baseCharset, newCharset } = settings,
-              OldBase = _B(baseCharset.length),
+    static encrypt(msg: string, key: string, baseCharset: string, newCharset: string) {
+        const OldBase = _B(baseCharset.length),
               NewBase = _B(newCharset.length);
         let RelativeNumber = _B(0),
             NewMagnitude: bigint,
@@ -69,15 +67,13 @@ class BaseN {
     }
     /**
      * Decrypts a message, given a key and two charsets.
-     * @param {Object} settings
-     * @param {string} settings.msg
-     * @param {string} settings.key
-     * @param {string} settings.baseCharset
-     * @param {string} settings.newCharset
+     * @param {string} msg
+     * @param {string} key
+     * @param {string} baseCharset
+     * @param {string} newCharset
      */
-    static decrypt(settings: {msg: string, key: string, baseCharset: string, newCharset: string}) {
-        const { msg, key, baseCharset, newCharset } = settings,
-              OldBase = _B(baseCharset.length),
+    static decrypt(msg: string, key: string, baseCharset: string, newCharset: string) {
+        const OldBase = _B(baseCharset.length),
               NewBase = _B(newCharset.length);
         let RelativeNumber = _B(0),
             NewMagnitude: bigint,
@@ -187,23 +183,21 @@ class BaseN {
     }
     /**
      * works exactly like ```.encrypt()``` but treats the input as segments, given a valid ```substringLength``` value.
-     * @param {Object} settings
-     * @param {string} settings.msg
-     * @param {string} settings.key
-     * @param {string} settings.baseCharset
-     * @param {string} settings.newCharset
-     * @param {number} settings.substringLength the length of a single substring of **msg**.
-     * @param {string|string[]} [settings.inBetween=" "] a string or a serie of strings that stitches the substrings together.
+     * @param {string} msg
+     * @param {string} key
+     * @param {string} baseCharset
+     * @param {string} newCharset
+     * @param {number} substringLength the length of a single substring of **msg**.
+     * @param {string|string[]} [inBetween=" "] a string or a serie of strings that stitches the substrings together.
      */
-    static encryptSubstrings(settings: {msg: string, key: string, baseCharset: string, newCharset: string, substringLength: number, inBetween?: string | string[]}) {
-        const { msg, key, baseCharset, newCharset, substringLength } = settings,
-                inBetween = typeof settings.inBetween === "undefined" ? " " : settings.inBetween;
+    static encryptSubstrings(msg: string, key: string, baseCharset: string, newCharset: string, substringLength: number, inBetween?: string | string[]) {
+        inBetween = typeof inBetween === "undefined" ? " " : inBetween;
         let result = "";
         if (typeof substringLength !== "number") {
             throw "substringLength must be a number!";
         }
         for (let i = 0; i < msg.length; i+=substringLength) {
-            result += this.encrypt({msg: msg.slice(i, i+substringLength), key, baseCharset, newCharset});
+            result += this.encrypt(msg.slice(i, i+substringLength), key, baseCharset, newCharset);
             if (i+substringLength < msg.length) {
                 result += Array.isArray(inBetween) ? inBetween[i % inBetween.length] : inBetween;
             }
@@ -212,17 +206,16 @@ class BaseN {
     }
     /**
      * works exactly like ```.decrypt()``` but treats the input as segments.
-     * @param {Object} settings
-     * @param {string} settings.msg
-     * @param {string} settings.key
-     * @param {string} settings.baseCharset
-     * @param {string} settings.newCharset
-     * @param {string|string[]} [settings.inBetween=" "] needed to split the input into substrings.
+     * @param {string} msg
+     * @param {string} key
+     * @param {string} baseCharset
+     * @param {string} newCharset
+     * @param {string|string[]} [inBetween=" "] needed to split the input into substrings.
      */
-    static decryptSubstrings(settings: {msg: string, key: string, baseCharset: string, newCharset: string, inBetween?: string | string[]}) {
-        const placeholder = "{{{{{{SPLIT--POINT}}}}}}",
-            { key, baseCharset, newCharset } = settings;
-        let msg = settings.msg, inBetween = typeof settings.inBetween === "undefined" ? " " : settings.inBetween, cuts = <string[]>[], result = "";
+    static decryptSubstrings(msg: string, key: string, baseCharset: string, newCharset: string, inBetween?: string | string[]) {
+        const placeholder = "{{{{{{SPLIT--POINT}}}}}}";
+        inBetween = typeof inBetween === "undefined" ? " " : inBetween; 
+        let cuts = <string[]>[], result = "";
         if (Array.isArray(inBetween)) {
             inBetween = [...new Set(inBetween)];
             for (let i = 0; i < inBetween.length; i++) {
@@ -232,7 +225,7 @@ class BaseN {
         }
         else { cuts = msg.split(inBetween) }
         for (let i = 0; i < cuts.length; i++) {
-            result += this.decrypt({ msg: cuts[i], key, baseCharset, newCharset });
+            result += this.decrypt(cuts[i], key, baseCharset, newCharset);
         }
         return result
     }
