@@ -3,8 +3,15 @@ using System.Numerics;
 using System.Collections.Generic;
 
 #nullable enable
-class Methods {
-    public static int Reduce(List<int> list) {
+/// <summary>
+/// A static class that provides a variety of functions to encrypt/decrypt messages. All methods return strings.
+/// </summary>
+static class BaseN {
+    /// <summary>
+    /// Helper methods for the BaseN class
+    /// </summary>
+    private class Methods {
+       public static int Reduce(List<int> list) {
         int cumulative = 0;
         for (int i = 0; i < list.Count; i++) {
             cumulative += list[i];
@@ -33,9 +40,13 @@ class Methods {
             }
         }
         return unique.ToArray();
+    } 
     }
-}
-class BaseN {
+    /// <summary>
+    /// Encrypts a message, given a key and two charsets.
+    /// </summary>
+    /// <param name="charset1">Must include all symbols used in both msg and key. String of non repeating characters.</param>
+    /// <param name="charset2">String of non repeating characters.</param>
     public static string Encrypt(string msg, string key, string charset1, string charset2) {
         
         BigInteger OldBase = charset1.Length;
@@ -60,9 +71,6 @@ class BaseN {
         while (Methods.Pow(NewBase,NewMagnitude) <= RelativeNumber && Methods.Pow(NewBase,(NewMagnitude + 1)) < RelativeNumber) {
             NewMagnitude = NewMagnitude + 1;
         }
-        //for (NewMagnitude; Math.Pow(NewBase,NewMagnitude) <= RelativeNumber && Math.Pow(NewBase,(NewMagnitude + 1)) < RelativeNumber; NewMagnitude++) {
-        //    int x = 0;
-        //} 
         // 3. encrypt msg by subtracting from the relative number, starting from the highest magnitude:
         while (NewMagnitude >= 0) {
             for (BigInteger characterStep = 0; characterStep < NewBase; characterStep++) {
@@ -88,6 +96,10 @@ class BaseN {
         }
         return EncryptedMsg;
     }
+    /// <summary>
+    /// Decrypts a message, given a key and two charsets. There order of charset1 and charset2 needs to be swapped in order to correctly decode the original message.
+    /// </summary>
+    /// <returns></returns>
     public static string Decrypt(string msg, string key, string charset1, string charset2) {
         BigInteger OldBase = charset1.Length;
         BigInteger NewBase = charset2.Length;
@@ -141,6 +153,9 @@ class BaseN {
         }
         return DecryptedMsg;
     }
+    /// <summary>
+    /// Returns all characters contained in msg, without duplicates.
+    /// </summary>
     public static string ExtractCharset(string msg) {
         string result = "";
         for (int i = 0; i < msg.Length; i++) {
@@ -151,9 +166,21 @@ class BaseN {
         }
         return result;
     }
+    /// <summary>
+    /// Returns a safe charset for both the msg and key.
+    /// </summary>
+    /// <param name="substringLength">Needed only if the created charset is going to be used in <c>.EncryptSubstrings()/.DecryptSubstrings()</c>. Affects only <c>msg</c></param>
+    /// <exception>ArgumentException: sometimes, given a <c>substringLength</c> and a long <c>msg</c>, it's impossible to create a safe charset.</exception>
     public static string CharsetFromMsgAndKey(string msg, string key, int substringLength = 0) {
         return BaseN.ExtractAndRandomize(BaseN.ExtractCharset(msg + key), substringLength);
     }
+    /// <summary>
+    /// This function extracts the charset of the message and shuffles it randomly.
+    /// It attempts to shuffle it in a way no substring of <c>msg</c> will start with the first letter of the charset.
+    /// </summary>
+    /// <param name="msg"></param>
+    /// <param name="substringLength">If equal to <c>0</c> the input will be treated as a whole word.</param>
+    /// <exception cref="ArgumentException"></exception>
     public static string ExtractAndRandomize(string msg, int substringLength = 0) {
         string firstLetters = substringLength == 0 ? "" : BaseN.ExtractCharset(Methods.SplitRegex(msg, substringLength));
         string charset = BaseN.ExtractCharset(msg);
@@ -181,8 +208,18 @@ class BaseN {
         }
         return result;
     }
+    /// <summary>
+    /// works exactly like <c>.Encrypt()</c> but treats the input as segments, given a valid <c>substringLength</c> value.
+    /// </summary>
+    /// <param name="substringLength">length of each segment</param>
+    /// <param name="inBetween">a serie of strings that stitches the substrings together.</param>
+    /// <exception cref="ArgumentException"></exception>
+    /// <returns></returns>
     public static string EncryptSubstrings(string msg, string key, string charset1, string charset2, int substringLength, string[]? inBetween = null) {
         inBetween = inBetween ?? new string[0];
+        if (substringLength < 2) {
+            throw new ArgumentException("substringLength must be >= 2");
+        }
         string result = "";
         for (int i = 0; i < msg.Length; i += substringLength) {
             result += BaseN.Encrypt(msg.Substring(i, Math.Min(msg.Length - i,substringLength)), key, charset1, charset2);
@@ -192,6 +229,11 @@ class BaseN {
         }
         return result;
     }
+    /// <summary>
+    /// works exactly like <c>.Decrypt()<c> but treats the input as segments.
+    /// </summary>
+    /// <param name="inBetween">S serie of strings that stitches the substrings together. Needed to properly split the <c>msg</c></param>
+    /// <returns></returns>
     public static string DecryptSubstrings(string msg, string key, string charset1, string charset2, string[]? inBetween = null) {
         inBetween = inBetween ?? new string[0];
         const string placeholder = "{{{{{{SPLIT--POINT}}}}}}";
