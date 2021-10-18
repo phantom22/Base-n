@@ -61,9 +61,6 @@ class BaseN {
         while (Methods.Pow(NewBase,NewMagnitude) <= RelativeNumber && Methods.Pow(NewBase,(NewMagnitude + 1)) < RelativeNumber) {
             NewMagnitude = NewMagnitude + 1;
         }
-        //for (NewMagnitude; Math.Pow(NewBase,NewMagnitude) <= RelativeNumber && Math.Pow(NewBase,(NewMagnitude + 1)) < RelativeNumber; NewMagnitude++) {
-        //    int x = 0;
-        //} 
         // 3. encrypt msg by subtracting from the relative number, starting from the highest magnitude:
         while (NewMagnitude >= 0) {
             for (BigInteger characterStep = 0; characterStep < NewBase; characterStep++) {
