@@ -11,36 +11,36 @@ static class BaseN {
     /// Helper methods for the BaseN class
     /// </summary>
     private class Methods {
-       public static int Reduce(List<int> list) {
-        int cumulative = 0;
-        for (int i = 0; i < list.Count; i++) {
-            cumulative += list[i];
-        }
-        return cumulative;
-    }
-    public static BigInteger Pow(BigInteger a, int b) {
-        BigInteger cumulative = 1;
-        for (int i = 0; i < b; i++) {
-            cumulative = cumulative * a;
-        }
-        return cumulative;
-    }
-    public static string SplitRegex(string input, int substringLength) {
-        string output = "";
-        for (int i = 0; i < input.Length; i+=substringLength) {
-            output += input.Substring(i,Math.Min(input.Length-i,substringLength))[0];
-        }
-        return output;
-    }
-    public static string[] Set(string[] array) {
-        List<string> unique = new List<string>();
-        for (int i = 0; i < array.Length; i++) {
-            if (!unique.Contains(array[i])) {
-                unique.Add(array[i]);
+        public static int Reduce(List<int> list) {
+            int cumulative = 0;
+            for (int i = 0; i < list.Count; i++) {
+                cumulative += list[i];
             }
+            return cumulative;
         }
-        return unique.ToArray();
-    } 
+        public static BigInteger Pow(BigInteger a, int b) {
+            BigInteger cumulative = 1;
+            for (int i = 0; i < b; i++) {
+                cumulative = cumulative * a;
+            }
+            return cumulative;
+        }
+        public static string SplitRegex(string input, int substringLength) {
+            string output = "";
+            for (int i = 0; i < input.Length; i+=substringLength) {
+                output += input.Substring(i,Math.Min(input.Length-i,substringLength))[0];
+            }
+            return output;
+        }
+        public static string[] Set(string[] array) {
+            List<string> unique = new List<string>();
+            for (int i = 0; i < array.Length; i++) {
+                if (!unique.Contains(array[i])) {
+                    unique.Add(array[i]);
+                }
+            }
+            return unique.ToArray();
+        } 
     }
     /// <summary>
     /// Encrypts a message, given a key and two charsets.
