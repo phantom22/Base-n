@@ -3,7 +3,6 @@ using System.Numerics;
 using System.Collections.Generic;
 
 #nullable enable
-
 class Methods {
     public static int Reduce(List<int> list) {
         int cumulative = 0;
@@ -61,6 +60,9 @@ class BaseN {
         while (Methods.Pow(NewBase,NewMagnitude) <= RelativeNumber && Methods.Pow(NewBase,(NewMagnitude + 1)) < RelativeNumber) {
             NewMagnitude = NewMagnitude + 1;
         }
+        //for (NewMagnitude; Math.Pow(NewBase,NewMagnitude) <= RelativeNumber && Math.Pow(NewBase,(NewMagnitude + 1)) < RelativeNumber; NewMagnitude++) {
+        //    int x = 0;
+        //} 
         // 3. encrypt msg by subtracting from the relative number, starting from the highest magnitude:
         while (NewMagnitude >= 0) {
             for (BigInteger characterStep = 0; characterStep < NewBase; characterStep++) {
@@ -161,7 +163,6 @@ class BaseN {
         var rand = new Random();
         while (charset.Length != maxIterations - 1) {
             int r = (int)(rand.NextDouble() * testCharset.Length);
-            Console.WriteLine($"{charset}");
             if (substringLength == 0 && msg[0] == testCharset[r] || firstLetters.Contains(testCharset[r])) {
                 testCharset = testCharset.Substring(0, r) + testCharset.Substring(r + 1);
                 continue;
